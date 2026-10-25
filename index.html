@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BrandSpark: Hot & Sweet organiza inventario, ventas, finanzas y documentos de emprendimientos.">
+  <title>BrandSpark: Hot & Sweet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#inicio">
+      <span>Brand<span>Spark</span> ✦</span>
+      <small>HOT & SWEET · Organización que impulsa tus ideas</small>
+    </a>
+
+    <button id="menuToggle" class="menu-toggle" type="button"
+      aria-expanded="false" aria-controls="mainNav">☰</button>
+
+    <nav id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#inventario">Inventario</a>
+      <a href="#ventas">Ventas</a>
+      <a href="#herramientas">Archivos y finanzas</a>
+      <a href="#reportes">Reportes</a>
+      <a href="#colaboradores">Emprendimientos</a>
+      <a href="#equipo">Nuestro equipo</a>
+    </nav>
+
+    <button id="openManual" class="btn btn-soft" type="button">
+      📘 Manual de uso
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- INICIO -->
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">ORGANIZACIÓN · CONTROL · COLABORACIÓN</span>
+        <h1>Tu emprendimiento organizado, <em>un paso a la vez.</em></h1>
+
+        <p class="lead">
+          BrandSpark: Hot & Sweet reúne herramientas digitales para organizar
+          inventarios, ventas, ingresos, egresos y documentos de
+          <strong>Kribela’s Sweet</strong> y <strong>Hot Dogs Maristas</strong>.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#inventario">Abrir herramientas ↗</a>
+          <button class="btn btn-soft" id="heroManual" type="button">
+            Consultar el manual
+          </button>
+        </div>
+
+        <p class="muted">✦ Prototipo académico de apoyo administrativo y contable.</p>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-top">✦ ESPACIO DE ORGANIZACIÓN</div>
+        <h2>Todo en orden.</h2>
+
+        <div class="mini-grid">
+          <div class="mini pink">▤<b>Documentos</b><small>Archivo digital</small></div>
+          <div class="mini blue">▥<b>Inventario</b><small>Entradas y salidas</small></div>
+          <div class="mini lilac">$<b>Finanzas</b><small>Ingresos y egresos</small></div>
+          <div class="mini white">✓<b>Ventas</b><small>Totales automáticos</small></div>
+        </div>
+
+        <p class="center">Organiza hoy. Avanza con claridad.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon">
+    ✧ Una propuesta colaborativa para registrar, consultar y organizar mejor. ✧
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">¿QUÉ PUEDES HACER?</span>
+        <h2>Servicios principales</h2>
+        <p>Registros y herramientas en un solo espacio, con información separada por emprendimiento.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card tint-pink">
+          <span class="symbol">▤</span>
+          <h3>Área contable</h3>
+          <ul>
+            <li>Registro de ventas e ingresos.</li>
+            <li>Control de egresos y compras.</li>
+            <li>Resumen de movimientos económicos.</li>
+            <li>Reportes por fechas y emprendimiento.</li>
+          </ul>
+        </article>
+
+        <article class="card tint-blue">
+          <span class="symbol">▦</span>
+          <h3>Área administrativa</h3>
+          <ul>
+            <li>Control de productos e ingredientes.</li>
+            <li>Entradas y salidas de inventario.</li>
+            <li>Organización de documentos digitales.</li>
+            <li>Alertas de existencias bajas.</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="notice">
+        Los datos se guardan en este navegador. Descarga respaldos periódicamente
+        y conserva copias de los documentos importantes.
+      </p>
+    </div>
+  </section>
+
+  <!-- INVENTARIO -->
+  <section id="inventario" class="section section-soft">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">PRODUCTOS E INGREDIENTES</span>
+        <h2>Control de inventario</h2>
+        <p>Escribe libremente el nombre del emprendimiento y del producto. Puedes editar o eliminar registros.</p>
+      </div>
+
+      <div class="layout-2">
+        <form id="inventoryForm" class="panel">
+          <h3 id="inventoryFormTitle">Agregar producto o ingrediente</h3>
+          <input type="hidden" name="id">
+
+          <label>Emprendimiento
+            <input name="company" required placeholder="Escribe el nombre del emprendimiento">
+          </label>
+
+          <label>Producto o ingrediente
+            <input name="productName" required placeholder="Ej. Cupcake o pan para hot dog">
+          </label>
+
+          <div class="form-row">
+            <label>Existencias iniciales
+              <input name="quantity" type="number" min="0" step="1" value="0" required>
+            </label>
+            <label>Precio unitario ($)
+              <input name="price" type="number" min="0" step="0.01" value="0" required>
+            </label>
+          </div>
+
+          <label>Categoría
+            <input name="category" placeholder="Ej. Producto terminado o ingrediente">
+          </label>
+
+          <div class="form-row">
+            <button class="btn btn-primary" type="submit">Guardar producto</button>
+            <button id="cancelInventoryEdit" class="btn btn-soft" type="button" hidden>
+              Cancelar edición
+            </button>
+          </div>
+
+          <small class="hint">Si un artículo ya existe, edítalo en lugar de duplicarlo.</small>
+        </form>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Productos registrados</h3>
+            <button id="clearInventory" class="btn btn-small btn-soft" type="button">
+              Vaciar lista
+            </button>
+          </div>
+
+          <div class="stats">
+            <div><small>Productos</small><strong id="productCount">0</strong></div>
+            <div><small>Unidades</small><strong id="unitCount">0</strong></div>
+            <div><small>Valor estimado</small><strong id="inventoryValue">$0.00</strong></div>
+          </div>
+
+          <div id="lowStockAlert" class="notice warning" hidden></div>
+
+          <div class="filters">
+            <label>Buscar
+              <input id="inventorySearch" type="search" placeholder="Producto, categoría o emprendimiento">
+            </label>
+            <label>Emprendimiento
+              <input id="inventoryCompanyFilter" type="text" placeholder="Escribe para filtrar">
+            </label>
+            <label>Estado
+              <select id="inventoryStatusFilter">
+                <option value="all">Todos</option>
+                <option value="low">Existencias bajas</option>
+                <option value="ok">Existencias suficientes</option>
+              </select>
+            </label>
+            <label>Alerta con unidades o menos
+              <input id="lowStockThreshold" type="number" min="0" step="1" value="3">
+            </label>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Emprendimiento</th><th>Producto</th><th>Categoría</th>
+                  <th>Existencias</th><th>Precio</th><th>Subtotal</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel section-gap">
+        <h3>Registrar entrada o salida</h3>
+        <form id="stockForm">
+          <input type="hidden" name="id">
+
+          <div class="form-row">
+            <label>Emprendimiento
+              <input name="company" required placeholder="Escribe el emprendimiento">
+            </label>
+            <label>Producto o ingrediente
+              <input name="productName" required placeholder="Escribe el producto exacto">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>Tipo de movimiento
+              <input name="movementType" required placeholder="Entrada o salida">
+            </label>
+            <label>Cantidad
+              <input name="quantity" type="number" min="1" step="1" required>
+            </label>
+          </div>
+
+          <label>Motivo
+            <input name="note" placeholder="Compra, uso, ajuste, merma...">
+          </label>
+
+          <div class="form-row">
+            <button class="btn btn-primary" type="submit">Guardar movimiento</button>
+            <button id="cancelStockEdit" class="btn btn-soft" type="button" hidden>
+              Cancelar edición
+            </button>
+          </div>
+        </form>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Emprendimiento</th><th>Producto</th>
+                <th>Tipo</th><th>Cantidad</th><th>Motivo</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="stockRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTAS -->
+  <section id="ventas" class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">REGISTRO COMERCIAL</span>
+        <h2>Registro de ventas</h2>
+        <p>La venta descuenta unidades del inventario si el producto existe y registra el ingreso vinculado automáticamente.</p>
+      </div>
+
+      <div class="layout-2">
+        <form id="salesForm" class="panel">
+          <h3 id="salesFormTitle">Registrar una venta</h3>
+          <input type="hidden" name="id">
+
+          <label>Emprendimiento
+            <input name="company" required placeholder="Escribe el nombre del emprendimiento">
+          </label>
+          <label>Producto vendido
+            <input name="productName" required placeholder="Escribe el producto">
+          </label>
+
+          <div class="form-row">
+            <label>Fecha
+              <input name="date" type="date" required>
+            </label>
+            <label>Cantidad
+              <input name="quantity" type="number" min="1" step="1" required value="1">
+            </label>
+          </div>
+
+          <label>Precio unitario ($)
+            <input name="price" type="number" min="0.01" step="0.01" required>
+          </label>
+          <label>Observación
+            <input name="note" placeholder="Pedido, cliente o detalle opcional">
+          </label>
+
+          <div class="total-preview">
+            Total de la venta <strong id="saleTotalPreview">$0.00</strong>
+          </div>
+
+          <div class="form-row">
+            <button class="btn btn-primary" type="submit">Guardar venta</button>
+            <button id="cancelSaleEdit" class="btn btn-soft" type="button" hidden>
+              Cancelar edición
+            </button>
+          </div>
+        </form>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Ventas registradas</h3>
+            <span id="salesTotalBadge" class="pill">$0.00</span>
+          </div>
+
+          <div class="filters">
+            <label>Buscar
+              <input id="salesSearch" type="search" placeholder="Producto, fecha o detalle">
+            </label>
+            <label>Emprendimiento
+              <input id="salesCompanyFilter" type="text" placeholder="Escribe para filtrar">
+            </label>
+            <label>Desde<input id="salesFrom" type="date"></label>
+            <label>Hasta<input id="salesTo" type="date"></label>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th><th>Emprendimiento</th><th>Producto</th>
+                  <th>Cant.</th><th>Precio</th><th>Total</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="salesRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVOS Y FINANZAS -->
+  <section id="herramientas" class="section section-soft">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">DOCUMENTOS Y MOVIMIENTOS</span>
+        <h2>Archivos y control financiero</h2>
+        <p>Registra ingresos y egresos, y guarda documentos administrativos para consultarlos cuando los necesites.</p>
+      </div>
+
+      <div class="grid-2">
+        <form id="financeForm" class="panel">
+          <h3 id="financeFormTitle">Registrar ingreso o egreso</h3>
+          <input type="hidden" name="id">
+
+          <label>Emprendimiento
+            <input name="company" required placeholder="Escribe el emprendimiento">
+          </label>
+
+          <div class="form-row">
+            <label>Tipo de movimiento
+              <input name="type" required placeholder="Ingreso o egreso">
+            </label>
+            <label>Fecha<input name="date" type="date" required></label>
+          </div>
+
+          <label>Concepto
+            <input name="concept" required placeholder="Venta, compra de ingredientes, transporte...">
+          </label>
+          <label>Importe ($)
+            <input name="amount" type="number" min="0.01" step="0.01" required>
+          </label>
+
+          <div class="form-row">
+            <button class="btn btn-primary" type="submit">Guardar movimiento</button>
+            <button id="cancelFinanceEdit" class="btn btn-soft" type="button" hidden>
+              Cancelar edición
+            </button>
+          </div>
+
+          <small class="hint">
+            No registres otra vez como ingreso una venta que ya guardaste en Registro de ventas.
+          </small>
+        </form>
+
+        <form id="fileForm" class="panel">
+          <h3>Archivo digital</h3>
+
+          <label>Emprendimiento o carpeta
+            <input name="company" required placeholder="Escribe el emprendimiento">
+          </label>
+          <label>Descripción del documento
+            <input name="description" placeholder="Factura, comprobante, presupuesto...">
+          </label>
+          <label>Seleccionar archivo
+            <input name="file" type="file" required>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Guardar documento</button>
+          <small class="hint">
+            Los documentos se almacenan en el navegador; archivos grandes pueden superar su capacidad.
+          </small>
+        </form>
+      </div>
+
+      <div class="panel section-gap">
+        <div class="panel-head">
+          <h3>Movimientos financieros</h3>
+          <span id="financeBalance" class="pill">Balance: $0.00</span>
+        </div>
+
+        <div class="filters">
+          <label>Buscar
+            <input id="financeSearch" type="search" placeholder="Concepto, tipo o fecha">
+          </label>
+          <label>Emprendimiento
+            <input id="financeCompanyFilter" type="text" placeholder="Escribe para filtrar">
+          </label>
+          <label>Tipo
+            <select id="financeTypeFilter">
+              <option value="all">Todos</option>
+              <option value="ingreso">Ingresos</option>
+              <option value="egreso">Egresos</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Emprendimiento</th><th>Tipo</th>
+                <th>Concepto</th><th>Importe</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="financeRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel section-gap">
+        <div class="panel-head">
+          <h3>Documentos guardados</h3>
+          <span class="muted">Abrir, descargar o eliminar</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Emprendimiento</th><th>Documento</th>
+                <th>Archivo</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="fileRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORTES Y RESPALDO -->
+  <section id="reportes" class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">CONSULTA DE RESULTADOS</span>
+        <h2>Reportes y respaldo</h2>
+        <p>Resume ventas y movimientos financieros por fechas y emprendimiento. Puedes exportar o recuperar tus datos.</p>
+      </div>
+
+      <div class="panel">
+        <div class="filters report-filters">
+          <label>Emprendimiento
+            <input id="reportCompany" type="text" placeholder="Deja vacío para todos">
+          </label>
+          <label>Desde<input id="reportFrom" type="date"></label>
+          <label>Hasta<input id="reportTo" type="date"></label>
+          <button id="runReport" class="btn btn-primary" type="button">Generar reporte</button>
+        </div>
+
+        <div class="stats report-stats">
+          <div><small>Total de ventas</small><strong id="reportSales">$0.00</strong></div>
+          <div><small>Ingresos</small><strong id="reportIncome">$0.00</strong></div>
+          <div><small>Egresos</small><strong id="reportExpense">$0.00</strong></div>
+          <div><small>Balance</small><strong id="reportBalance">$0.00</strong></div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Emprendimiento</th><th>Ventas</th><th>Ingresos</th>
+                <th>Egresos</th><th>Balance</th>
+              </tr>
+            </thead>
+            <tbody id="reportRows"></tbody>
+          </table>
+        </div>
+
+        <div class="actions wrap">
+          <button id="exportReport" class="btn btn-soft" type="button">Exportar reporte CSV</button>
+          <button id="exportBackup" class="btn btn-primary" type="button">Descargar respaldo completo</button>
+          <label class="btn btn-soft file-button">
+            Recuperar respaldo
+            <input id="importBackup" type="file" accept="application/json,.json">
+          </label>
+        </div>
+
+        <p class="hint">
+          El balance es ingresos menos egresos; no equivale necesariamente a la ganancia neta del negocio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRENDIMIENTOS -->
+  <section id="colaboradores" class="section section-soft">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">EMPRENDIMIENTOS INTEGRADOS</span>
+        <h2>Un espacio para crecer</h2>
+        <p>BrandSpark organiza la información de los emprendimientos participantes.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card collaborator">
+          <div class="logo logo-cake">🧁<span>KRIBELA’S SWEET</span></div>
+          <h3>Kribela’s Sweet</h3>
+          <p>Elaboración y venta de cupcakes y pedidos. Aquí puedes controlar ingredientes, productos preparados, ventas y gastos.</p>
+          <a class="btn btn-soft" href="#ventas">Registrar sus ventas</a>
+        </article>
+
+        <article class="card collaborator">
+          <div class="logo logo-hotdog">🌭<span>HOT DOGS MARISTAS</span></div>
+          <h3>Hot Dogs Maristas</h3>
+          <p>Preparación y venta de hot dogs. Organiza ventas diarias, ingredientes, compras, gastos y existencias disponibles.</p>
+          <a class="btn btn-soft" href="#ventas">Registrar sus ventas</a>
+        </article>
+      </div>
+    </div>
+  </section>
+<section id="equipo" class="section">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">LAS PERSONAS DETRÁS DE LA IDEA</span>
+      <h2>Nuestro equipo</h2>
+      <p>
+        En BrandSpark, cada integrante aporta sus habilidades y trabaja
+        desde un área específica para impulsar la organización de los
+        emprendimientos.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <article class="team-card team-pink">
+        <div class="team-avatar">👩🏻‍💼</div>
+        <span class="team-area">DIRECCIÓN</span>
+        <h3>Alison Aguilar</h3>
+        <p>Coordina el equipo, orienta el trabajo y supervisa el cumplimiento de los objetivos.</p>
+      </article>
+
+      <article class="team-card team-blue">
+        <div class="team-avatar">🛠️</div>
+        <span class="team-area">PRODUCCIÓN</span>
+        <h3>César Ramírez</h3>
+        <p>Apoya la organización de los procesos y las actividades relacionadas con la producción.</p>
+      </article>
+
+      <article class="team-card team-lilac">
+        <div class="team-avatar">📣</div>
+        <span class="team-area">VENTAS Y MERCADEO</span>
+        <h3>Fiorela Guerrero</h3>
+        <p>Se encarga de las actividades de ventas, la comunicación y la promoción del emprendimiento.</p>
+      </article>
+
+      <article class="team-card team-pink">
+        <div class="team-avatar">📊</div>
+        <span class="team-area">FINANZAS</span>
+        <h3>Saúl Castellanos</h3>
+        <p>Apoya el control de ingresos, egresos y la organización de la información financiera.</p>
+      </article>
+    </div>
+  </div>
+</section>
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <div class="container contact-box">
+      <div>
+        <span class="eyebrow">¿NECESITAS AYUDA?</span>
+        <h2>Contacto</h2>
+        <p>Para consultas sobre el proyecto, puedes preparar un mensaje para el equipo.</p>
+        <p><strong>Correo:</strong> <a href="mailto:brandsparksv@gmail.com">brandsparksv@gmail.com</a></p>
+      </div>
+
+      <form id="contactForm" class="panel">
+        <label>Nombre<input name="name" required></label>
+        <label>Correo electrónico<input name="email" type="email" required></label>
+        <label>Mensaje<textarea name="message" rows="3" required></textarea></label>
+        <button class="btn btn-primary" type="submit">Preparar mensaje</button>
+        <p id="contactFeedback" class="hint" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <a class="brand" href="#inicio">
+      <span>Brand<span>Spark</span> ✦</span>
+      <small>Hot & Sweet</small>
+    </a>
+    <p>Organización que impulsa tus ideas.</p>
+    <small>© <span id="year"></span> BrandSpark · Prototipo académico.</small>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- VENTANA DEL MANUAL -->
+<div id="manualOverlay" class="modal-overlay" hidden>
+  <section class="manual-modal" role="dialog" aria-modal="true"
+    aria-labelledby="manualTitle" tabindex="-1">
+
+    <header class="manual-header">
+      <div>
+        <span class="eyebrow">GUÍA DEL PROTOTIPO</span>
+        <h2 id="manualTitle">BrandSpark: Hot & Sweet</h2>
+        <p>Manual de uso del prototipo de gestión administrativa y contable</p>
+      </div>
+      <button id="manualClose" class="btn btn-soft" type="button" aria-label="Cerrar manual">✕</button>
+    </header>
+
+    <div class="manual-content">
+      <h3>1. Presentación del sistema</h3>
+      <p>
+        BrandSpark: Hot & Sweet es una propuesta de gestión administrativa y contable
+        que busca facilitar la organización y el control de la información de los
+        emprendimientos. Reúne herramientas para registrar, consultar y organizar
+        ventas, inventario, ingresos, egresos y documentos importantes. El manual
+        explica el funcionamiento de las herramientas y promueve el registro ordenado
+        y uniforme de la información.
+      </p>
+
+      <h3>2. Acceso y organización</h3>
+      <p>La plataforma se organiza en áreas principales:</p>
+      <ul>
+        <li><strong>Registro de ventas:</strong> documenta productos vendidos, cantidades, precios y totales.</li>
+        <li><strong>Control de inventario:</strong> permite seguir existencias, entradas y salidas de productos e ingredientes.</li>
+        <li><strong>Ingresos y egresos:</strong> organiza movimientos económicos como ventas, compras y otros gastos.</li>
+        <li><strong>Archivos digitales:</strong> guarda documentos relacionados con las operaciones.</li>
+        <li><strong>Resumen general y reportes:</strong> permite consultar resultados por emprendimiento y del conjunto.</li>
+      </ul>
+
+      <h3>3. Registro de ventas</h3>
+      <ol>
+        <li>Entra a Registro de ventas.</li>
+        <li>Escribe el nombre del emprendimiento y del producto vendido.</li>
+        <li>Indica la fecha, la cantidad de unidades y el precio unitario.</li>
+        <li>Comprueba el total calculado automáticamente.</li>
+        <li>Guarda la venta y verifica que aparezca en la tabla.</li>
+      </ol>
+      <p><strong>K​​ribela’s Sweet:</strong> registra ventas de cupcakes y pedidos.
+        <strong>Hot Dogs Maristas:</strong> registra ventas diarias de hot dogs y otros
+        productos. Registra cada venta una sola vez.</p>
+
+      <h3>4. Actualización del inventario</h3>
+      <p>
+        Registra productos e ingredientes desde Control de inventario. Usa una entrada
+        para sumar existencias y una salida para descontar artículos utilizados.
+        Kribela’s Sweet puede controlar ingredientes y cupcakes preparados; Hot Dogs
+        Maristas puede controlar ingredientes y materiales de preparación. Las ventas
+        descuentan automáticamente las unidades del producto vendido si el artículo
+        coincide con el inventario. Utiliza la búsqueda y las alertas de existencias
+        bajas para identificar necesidades de reposición.
+      </p>
+
+      <h3>5. Registro de ingresos y egresos</h3>
+      <p>
+        Los ingresos son el dinero recibido; los egresos son pagos por compras,
+        ingredientes, materiales y otros gastos. Para registrar un movimiento, escribe
+        el emprendimiento, tipo, fecha, concepto e importe; comprueba que coincida con
+        el comprobante y guarda. Las ventas registradas crean un ingreso vinculado
+        automáticamente: no registres la misma venta otra vez como ingreso manual.
+      </p>
+
+      <h3>6. Consulta de resultados</h3>
+      <ol>
+        <li>Revisa los totales de ventas y las existencias.</li>
+        <li>Filtra ventas y movimientos por texto, emprendimiento y fechas.</li>
+        <li>En Reportes, escribe el emprendimiento o deja el campo vacío para consultar todos.</li>
+        <li>Selecciona el período y genera el reporte.</li>
+        <li>Compara los resultados con los registros individuales y exporta el CSV si lo necesitas.</li>
+      </ol>
+      <p>
+        El balance de ingresos menos egresos no equivale necesariamente a la ganancia
+        real; también deben considerarse costos de productos y otros gastos.
+      </p>
+
+      <h3>7. Organización de archivos digitales</h3>
+      <ol>
+        <li>Abre Archivos y control financiero.</li>
+        <li>Escribe el emprendimiento o carpeta.</li>
+        <li>Selecciona el documento y añade una descripción.</li>
+        <li>Guárdalo y usa las opciones para abrir, descargar o eliminarlo.</li>
+        <li>Revisa periódicamente los archivos para mantenerlos organizados.</li>
+      </ol>
+      <p>
+        Los archivos se guardan en el navegador y pueden ocupar espacio. Descarga
+        copias externas de los documentos importantes.
+      </p>
+
+      <h3>8. Recomendaciones de uso</h3>
+      <ul>
+        <li>Registra la información tan pronto como sea posible.</li>
+        <li>Verifica fechas, cantidades, precios e importes antes de guardar.</li>
+        <li>Evita duplicar ventas, compras o movimientos económicos.</li>
+        <li>Mantén separados los registros de Kribela’s Sweet y Hot Dogs Maristas.</li>
+        <li>Compara las existencias digitales con las cantidades reales.</li>
+        <li>Conserva comprobantes y documentos de respaldo.</li>
+        <li>Usa Editar y Eliminar con cuidado y revisa los cambios.</li>
+        <li>Descarga respaldos periódicamente y guárdalos en un lugar seguro.</li>
+      </ul>
+
+      <h3>9. Responsabilidad de los usuarios</h3>
+      <p>
+        Cada usuario debe ingresar información verdadera, mantener actualizados los
+        registros que le correspondan y comunicar errores detectados. Las personas
+        responsables deben revisar periódicamente los datos y comprobar que las
+        operaciones coincidan con los documentos disponibles.
+      </p>
+
+      <h3>10. Conclusión</h3>
+      <p>
+        Este manual establece indicaciones para utilizar BrandSpark: Hot & Sweet de
+        manera organizada. El registro de ventas, el control del inventario, la
+        documentación de ingresos y egresos y la organización de archivos digitales
+        buscan facilitar la administración de Kribela’s Sweet y Hot Dogs Maristas,
+        reducir errores y ofrecer información útil para apoyar la toma de decisiones.
+      </p>
+    </div>
+
+    <footer class="manual-footer">
+      <button id="printManual" class="btn btn-primary" type="button">Imprimir manual</button>
+      <button id="manualCloseBottom" class="btn btn-soft" type="button">Cerrar manual</button>
+    </footer>
+  </section>
+</div>
+</body>
+</html>
